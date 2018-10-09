@@ -35,7 +35,7 @@ if(!empty($_SESSION['authed']) && $_SESSION['authed'] === true && $_GET['role'] 
             Users
         </td>
         <td>
-            <form action="/testsite/index.php?<?php echo 'username='.$username.'&role='.$user_role;?>" method="post" name="user-search">
+            <form action="/BuggyBee/index.php?<?php echo 'username='.$username.'&role='.$user_role;?>" method="post" name="user-search">
                 <select name="userid">
                     <option value="">[Select User]</option>
                     <?php
@@ -65,7 +65,7 @@ if(!empty($_SESSION['authed']) && $_SESSION['authed'] === true && $_GET['role'] 
 }
 else if(empty($_SESSION['authed']))
 {
-    header('location: /testsite/login.php');
+    header('location: /BuggyBee/login.php');
     die;
 }
 else

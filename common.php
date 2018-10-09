@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL);
 session_start();
-$root_folder = "/testsite";
+$root_folder = "/BuggyBee";
 $user_role = $_SESSION['role'];
 $links = array(
                 'User Filter' => $root_folder.'/index.php?username=jared&role='.$user_role,

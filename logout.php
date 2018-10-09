@@ -2,4 +2,4 @@
 session_start();
 session_destroy();
 //unset($_SESSION);
-header('location: /testsite/login.php?message=signout');
+header('location: /BuggyBee/login.php?message=signout');

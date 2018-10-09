@@ -43,7 +43,7 @@ if(empty($_SESSION['authed'])){
 <?php
 }
 else {
-    header('location: /testsite/editprofile.php');
+    header('location: /BuggyBee/editprofile.php');
     die;
 }
 ?>

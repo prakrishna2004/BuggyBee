@@ -42,7 +42,7 @@ if(!empty($_SESSION['authed']) && $_SESSION['authed'] === true)  {
 <?php
 }
 else {
-    header('location: /testsite/login.php');
+    header('location: /BuggyBee/login.php');
     die;
 }
 ?>
