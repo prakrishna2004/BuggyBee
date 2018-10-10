@@ -1,6 +1,7 @@
 <?php
 require_once 'common.php';
 require_once 'dbfuncs.php';
+include 'header.php';
 
 $getUser = $_REQUEST["username"];
 $getId    = $_REQUEST["id"];
@@ -28,7 +29,8 @@ if(!empty($_SESSION['authed']) && $_SESSION['authed'] === true && $_GET['role'] 
    $user_query = "SELECT * FROM users";
    $user_info = getSelect($user_query); 
 ?>
-
+<div class="row">
+<div class="col-md-10">
 <table>
     <tr>
         <td>
@@ -51,7 +53,9 @@ if(!empty($_SESSION['authed']) && $_SESSION['authed'] === true && $_GET['role'] 
         </td>
     </tr>
 </table>
-
+</div>
+</div>
+<?php include 'footer.php'; ?>
 <?php
     foreach($results as $row) {
         echo "User found: <br>";
