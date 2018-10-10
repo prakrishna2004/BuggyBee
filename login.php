@@ -1,6 +1,7 @@
 <?php
 require_once 'common.php';
 require_once 'dbfuncs.php';
+require_once 'header.php';
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     if(!empty($_REQUEST['username']) && !empty($_REQUEST['password'])) {
@@ -40,6 +41,7 @@ if(empty($_SESSION['authed'])){
     <input name="password" id="password" /> <br />
     <input type="submit" value="Login!">
 </form>
+<?php include 'footer.php'; ?>
 <?php
 }
 else {
