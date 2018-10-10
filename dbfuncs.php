@@ -54,3 +54,16 @@ function insertQuery($query, $update = false)
         return ($update === false) ? true : mysql_insert_id();
     }
 }
+
+/* 
+function insertPreparedQuery($firstName, $surname, $email)
+{
+//$stmt = $conn->prepare("SELECT * FROM `users` WHERE `email`=:email AND `password` = :password");
+$stmt = $conn->prepare("update users set firstname= '" . :firstName . "', surname = '" . :surName . "', email='" . :eMail . "' where username = '" . :userName ."'"; 
+$stmt->bindValue(':firstName', $firstName);
+$stmt->bindValue(':surName', $surname);
+$stmt->bindValue(':eMail', $email);
+//$stmt->bindValue(':password', $_POST["password"]);
+return $stmt->execute();
+}
+*/
