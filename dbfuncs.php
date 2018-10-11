@@ -55,7 +55,6 @@ function insertQuery($query, $update = false)
     }
 }
 
-/* 
 function insertPreparedQuery($firstName, $surname, $email, $username)
 {
     //$stmt = $conn->prepare("SELECT * FROM `users` WHERE `email`=:email AND `password` = :password");
@@ -63,7 +62,7 @@ function insertPreparedQuery($firstName, $surname, $email, $username)
     //$stmt = $conn->prepare("update users set firstname= ?, surname = ?, email= ? where username = ?");
     //$stmt->bind_param("ssss", $firstName, $surname, $email, $userName);
     //$stmt = $conn->prepare("update users set firstname= '" . firstName . "', surname = '" . surName . "', email='" . eMail . "' where username = '" . userName ."'") VALUES (:firstName, :surName, :eMail, :userName);  
-    $stmt = $conn->prepare("update users set firstname= firstName, surname = surName, email = eMail where username = userName VALUES (:firstName, :surName, :eMail, :userName)";  
+    $stmt = $conn->prepare("update users set firstname= firstName, surname = surName, email = eMail where username = userName VALUES (:firstName, :surName, :eMail, :userName)");  
     $stmt->bindValue(':firstName', $firstName);
     $stmt->bindValue(':surName', $surname);
     $stmt->bindValue(':eMail', $email);
@@ -71,4 +70,3 @@ function insertPreparedQuery($firstName, $surname, $email, $username)
     //$stmt->bindValue(':password', $_POST["password"]);
     return $stmt->execute();
 }
-*/

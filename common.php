@@ -72,7 +72,7 @@ a:visited {
 <?php
 error_reporting(0);
 session_start();
-//error_reporting(E_ALL);
+error_reporting(E_ALL);
 $root_folder = "/BuggyBee";
 $user_role = $_REQUEST['role']?:$_SESSION['role'];
 $username = $_POST['username']?:$_SESSION['username'];
