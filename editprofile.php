@@ -5,6 +5,7 @@ if($_REQUEST['username'])
 $username = $_REQUEST['username'];
 else
 $username = $_SESSION['username'];
+$user_role = $_REQUEST['role']?:$_SESSION['role'];
 
 if(!empty($_SESSION['authed']) && $_SESSION['authed'] === true) {
     if(!empty($username)) {
@@ -13,9 +14,13 @@ if(!empty($_SESSION['authed']) && $_SESSION['authed'] === true) {
             if(!empty($_REQUEST['firstname']) && !empty($_REQUEST['surname'])
                 && !empty($_REQUEST['email'])) {
 
+                if(empty($_REQUEST['role']))
+                    $_REQUEST['role'] = $_SESSION['role'];
+
                 echo $updateSQL = "update users set firstname = '" . $_REQUEST['firstname']
                             . "', surname = '" . $_REQUEST['surname'] . "', email='" .
-                            $_REQUEST['email'] . "' where username = '" .  $username ."'";
+                            $_REQUEST['email'] . "', role = '" . $_REQUEST['role'] 
+                            . "' where username = '" .  $username ."'";
 
                 $updated = insertQuery($updateSQL, true);
                 if($updated === false) {
@@ -27,7 +32,7 @@ if(!empty($_SESSION['authed']) && $_SESSION['authed'] === true) {
             }
         }
         else {
-            echo $userSQL  = "select email, firstname, surname from users where username = '" .  $username ."'";
+            echo $userSQL  = "select email, firstname, surname, role from users where username = '" .  $username ."'";
             $userList = getSelect($userSQL);
 
             if(empty($userList) && is_array($userList)) {
@@ -43,6 +48,8 @@ if(!empty($_SESSION['authed']) && $_SESSION['authed'] === true) {
             <input name="surname" id="surname" value="<?=$user[2]?>" /> <br />
             <label for="email">Email:</label>
             <input name="email" id="email" value="<?=$user[0]?>" /> <br />
+            <label for="email">Role:</label>
+            <input name="role" id="role" value="<?=$user[3]?>" <?php if($user_role != 'admin'){ echo 'disabled';}?>/> <br />
             <input type="submit" value="Update profile">
         </form>
         <?php

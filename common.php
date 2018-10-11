@@ -1,14 +1,22 @@
 <?php
-error_reporting(E_ALL);
 session_start();
+error_reporting(E_ALL);
 $root_folder = "/BuggyBee";
-$user_role = $_SESSION['role'];
+$user_role = $_REQUEST['role']?:$_SESSION['role'];
+$username = $_REQUEST['username']?:$_SESSION['username'];
+if($_REQUEST['sess_id'])
+{
+    $sess_id = $_REQUEST['sess_id'];
+    session_id($sess_id);
+}
+else
+$sess_id = session_id();
 $links = array(
-                'User Filter' => $root_folder.'/index.php?username=jared&role='.$user_role,
+                'User Filter' => $root_folder.'/index.php?sess_id='.$sess_id.'&username='.$username.'&role='.$user_role,
                 'Login' => $root_folder.'/login.php', 
-                'Send Message' => $root_folder.'/sendmessage.php', 
-                'View Messages' => $root_folder.'/messages.php', 
-                'Edit Profile' => $root_folder.'/editprofile.php',
+                'Send Message' => $root_folder.'/sendmessage.php?sess_id='.$sess_id, 
+                'View Messages' => $root_folder.'/messages.php?sess_id='.$sess_id, 
+                'Edit Profile' => $root_folder.'/editprofile.php?sess_id='.$sess_id,
 		'Logout' => $root_folder.'/logout.php'
           );
 

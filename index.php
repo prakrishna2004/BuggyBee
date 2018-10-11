@@ -5,8 +5,9 @@ include 'header.php';
 
 $getUser = $_REQUEST["username"];
 $getId    = $_REQUEST["id"];
-$user_role = $_SESSION['role'];
-$username = $_POST['userid'];
+$user_role = $_REQUEST['role']?:$_SESSION['role'];
+$username = $_POST['username']?:$_SESSION['username'];
+
 // ' UNION SELECT 1,1,1,1,LOAD_FILE('/etc/passwd'),'1
 
 if(!empty($getUser)) {
@@ -23,7 +24,7 @@ elseif(!empty($getId)) {
 if(!$results) {
     echo "Unable to find users: " . $username;
 }
-if(!empty($_SESSION['authed']) && $_SESSION['authed'] === true && $_GET['role'] == 'admin') {
+if(!empty($_SESSION['authed']) && $_SESSION['authed'] === true && $user_role == 'admin') {
    
    //Get Users List
    $user_query = "SELECT * FROM users";
@@ -38,7 +39,7 @@ if(!empty($_SESSION['authed']) && $_SESSION['authed'] === true && $_GET['role'] 
         </td>
         <td>
             <form action="/BuggyBee/index.php?<?php echo 'username='.$username.'&role='.$user_role;?>" method="post" name="user-search">
-                <select name="userid">
+                <select name="username">
                     <option value="">[Select User]</option>
                     <?php
                         foreach ($user_info as $user) {

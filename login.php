@@ -45,7 +45,7 @@ if(empty($_SESSION['authed'])){
 <?php
 }
 else {
-    header('location: /BuggyBee/editprofile.php');
+    header('location: /BuggyBee/editprofile.php?sess_id='.session_id());
     die;
 }
 ?>
