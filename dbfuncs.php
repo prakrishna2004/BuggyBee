@@ -62,11 +62,13 @@ function insertPreparedQuery($firstName, $surname, $email, $username)
     //$stmt = $conn->prepare("update users set firstname= ?, surname = ?, email= ? where username = ?");
     //$stmt->bind_param("ssss", $firstName, $surname, $email, $userName);
     //$stmt = $conn->prepare("update users set firstname= '" . firstName . "', surname = '" . surName . "', email='" . eMail . "' where username = '" . userName ."'") VALUES (:firstName, :surName, :eMail, :userName);  
-    $stmt = $conn->prepare("update users set firstname= firstName, surname = surName, email = eMail where username = userName VALUES (:firstName, :surName, :eMail, :userName)");  
-    $stmt->bindValue(':firstName', $firstName);
-    $stmt->bindValue(':surName', $surname);
-    $stmt->bindValue(':eMail', $email);
-    $stmt->bindValue(':userName', $username);
-    //$stmt->bindValue(':password', $_POST["password"]);
+    global $mysqli_con;
+    if($mysqli_con === null)
+        $mysqli_con = connect();
+
+    $mysqli_con = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DB);
+
+    $stmt = $mysqli_con->prepare("update users set firstname= ?, surname = ?, email = ? where username = ?");  
+    $stmt->bind_param('ssss', $firstName, $surname, $email, $username);
     return $stmt->execute();
 }

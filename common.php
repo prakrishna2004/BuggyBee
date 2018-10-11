@@ -92,13 +92,13 @@ $links = array(
                 'Edit Profile' => $root_folder.'/editprofile.php?sess_id='.$sess_id,
 		'Logout' => $root_folder.'/logout.php'
           );
-
-if(!empty($_SESSION['authed']) && $_SESSION['authed'] === true) {
-    echo 'Logged in as: ' . $_SESSION['username'] . ' [' . $_SESSION['userid']
-    . ']<br/><br/>';
-}
 echo "<div class='bg-nav'>";
 foreach($links as $title => $link) {
     echo "<a class ='style-nav' href='" . $link . "'>" . $title . "<a> | ";
+}
+
+if(!empty($_SESSION['authed']) && $_SESSION['authed'] === true) {
+   echo '<div style="float:right;display:inline;color:#fff ;font-weight:bold;">Logged in as: ' . $_SESSION['username'] . ' [' . $_SESSION['userid']
+   . ']</div><br/><br/>';
 }
 echo "</div><br>";?>

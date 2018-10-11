@@ -31,10 +31,14 @@ if(empty($_SESSION['authed'])){
 <div class="container">
 <form method="POST" class="col-md-6">
     <?php 
-            if($_REQUEST['message'] == 'signout')
-            {
-                echo '<h4 style="color:red">You are successfully logged out.</h4>';
-            }
+        if($_REQUEST['message'] == 'signout')
+        {
+            echo '<h4 style="color:red">You are successfully logged out.</h4>';
+        }
+        else if($_REQUEST['message'] == 'success')
+        {
+            echo '<h4 style="color:green">You are successfully regisered. Welcome to BuggyBee</h4>';
+        }
     ?>
     <div class="form-group">
     <label for="username">Username</label>
