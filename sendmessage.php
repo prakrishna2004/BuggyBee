@@ -23,22 +23,30 @@ if(!empty($_SESSION['authed']) && $_SESSION['authed'] === true)  {
     $userList = getSelect($userSQL);
 
     if(!$userList) die('Unable to retrieve users to message');
-    $select = "<select name='user' id='user'>";
+    $select = "<select name='user' id='user' class='form-control'>";
     foreach($userList as $user)
         $select .= "<option value='" . $user[0] . "'>" . $user[1]
         . " " . $user[2] . "</option>";
     $select .= "</select>";
 ?>
-<form method="POST">
-    <p>Select a user you wish to message</p>
+<div class="container">
+<form method="POST" class="col-md-6">
+    <p style="font-weight: bold;font-size: 18px;">Select a user you wish to message</p>
+    <div class="form-group">
     <label for="user">User:</label>
     <?=$select?> <br/>
+    </div>
+    <div class="form-group">
     <label for="subject">Subject:</label>
-    <input name="subject" id="subject" /> <br />
+    <input class="form-control" name="subject" id="subject" /> <br />
+    </div>
+    <div class="form-group">
     <label for="message">Message:</label>
-    <textarea rows="10" cols="50" name="message"></textarea>
-    <input type="submit" value="Send pigeon">
+    <textarea class="form-control" rows="10" cols="50" name="message"></textarea>
+    </div>
+    <input class="btn-primary form-control" type="submit" value="Send Message">
 </form>
+</div>
 <?php
 }
 else {

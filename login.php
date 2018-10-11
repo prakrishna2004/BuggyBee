@@ -28,19 +28,25 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
 if(empty($_SESSION['authed'])){
 ?>
-<form method="POST">
+<div class="container">
+<form method="POST" class="col-md-6">
     <?php 
             if($_REQUEST['message'] == 'signout')
             {
                 echo '<h4 style="color:red">You are successfully logged out.</h4>';
             }
     ?>
-    <label for="username">username:</label>
-    <input name="username" id="username" /> <br />
-    <label for="password">password:</label>
-    <input name="password" id="password" /> <br />
-    <input type="submit" value="Login!">
+    <div class="form-group">
+    <label for="username">Username</label>
+    <input class="form-control" name="username" type="text" id="username" /> <br />
+    </div>
+    <div class="form-group">
+    <label for="password">Password:</label>
+    <input class="form-control" name="password" type="password" id="password" /> <br />
+    </div>
+    <input type="submit" class="btn-primary form-control" value="Login!">
 </form>
+</div>
 <?php include 'footer.php'; ?>
 <?php
 }
