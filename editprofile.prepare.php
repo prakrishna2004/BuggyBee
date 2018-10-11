@@ -20,7 +20,7 @@ if(!empty($_SESSION['authed']) && $_SESSION['authed'] === true) {
 
                 $updated = insertQuery($updateSQL, true);
                 */
-                $updated = insertPreparedQuery($_REQUEST['firstname'], $_REQUEST['surname'], $_REQUEST['email']);
+                $updated = insertPreparedQuery($_REQUEST['firstname'], $_REQUEST['surname'], $_REQUEST['email'], $username);
                 if($updated === false) {
                     echo 'Unable to update your profile.';
                 }
