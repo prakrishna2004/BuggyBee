@@ -39,7 +39,7 @@
         padding-top: 12px;
         padding-bottom: 12px;
         text-align: left;
-        background-color: #7575a3;
+        background-color: #004080;
         color: white;
         }
         #users td, #users th {
@@ -84,6 +84,7 @@ if($_REQUEST['sess_id'])
 else
 $sess_id = session_id();
 $links = array(
+                'Register' => $root_folder.'/register.php',
                 'Manage Users' => $root_folder.'/index.php?sess_id='.$sess_id.'&username='.$username.'&role='.$user_role,
                 'Login' => $root_folder.'/login.php', 
                 'Send Message' => $root_folder.'/sendmessage.php?sess_id='.$sess_id, 
