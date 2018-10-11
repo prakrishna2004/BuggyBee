@@ -5,6 +5,7 @@ if($_REQUEST['username'])
 $username = $_REQUEST['username'];
 else
 $username = $_SESSION['username'];
+$user_role = $_REQUEST['role']?:$_SESSION['role'];
 
 if(!empty($_SESSION['authed']) && $_SESSION['authed'] === true) {
     if(!empty($username)) {
@@ -13,13 +14,17 @@ if(!empty($_SESSION['authed']) && $_SESSION['authed'] === true) {
             if(!empty($_REQUEST['firstname']) && !empty($_REQUEST['surname'])
                 && !empty($_REQUEST['email'])) {
 
-                /* 
+                if(empty($_REQUEST['role']))
+                    $_REQUEST['role'] = $_SESSION['role'];
+
+/*
                 echo $updateSQL = "update users set firstname = '" . $_REQUEST['firstname']
                             . "', surname = '" . $_REQUEST['surname'] . "', email='" .
-                            $_REQUEST['email'] . "' where username = '" .  $username ."'";
+                            $_REQUEST['email'] . "', role = '" . $_REQUEST['role'] 
+                            . "' where username = '" .  $username ."'";
 
                 $updated = insertQuery($updateSQL, true);
-                */
+*/
                 $updated = insertPreparedQuery($_REQUEST['firstname'], $_REQUEST['surname'], $_REQUEST['email'], $username);
                 if($updated === false) {
                     echo 'Unable to update your profile.';
@@ -30,7 +35,7 @@ if(!empty($_SESSION['authed']) && $_SESSION['authed'] === true) {
             }
         }
         else {
-            echo $userSQL  = "select email, firstname, surname from users where username = '" .  $username ."'";
+            echo $userSQL  = "select email, firstname, surname, role from users where username = '" .  $username ."'";
             $userList = getSelect($userSQL);
 
             if(empty($userList) && is_array($userList)) {
@@ -38,16 +43,25 @@ if(!empty($_SESSION['authed']) && $_SESSION['authed'] === true) {
             }
             $user = $userList[0];
         ?>
-        <form method="POST">
-            <p>Edit your settings</p>
-            <label for="firstname">Firstname:</label>
-            <input name="firstname" id="firstname" value="<?=$user[1]?>" /> <br />
-            <label for="surname">Surname:</label>
-            <input name="surname" id="surname" value="<?=$user[2]?>" /> <br />
+        <div class="container">
+        <form method="POST" class="col-md-6">
+            <p style="font-weight: bold;font-size: 18px;">Edit Profile</p>
+            <div class="form-group">
+            <label for="firstname">First Name:</label>
+            <input class="form-control" name="firstname" id="firstname" value="<?=$user[1]?>" /> 
+            </div>
+             <div class="form-group">
+            <label for="surname">Last Name:</label>
+            <input class="form-control" name="surname" id="surname" value="<?=$user[2]?>" /> <br />
+            </div>
+            <div class="form-group">
             <label for="email">Email:</label>
-            <input name="email" id="email" value="<?=$user[0]?>" /> <br />
-            <input type="submit" value="Update profile">
+            <input name="email" class="form-control" id="email" value="<?=$user[0]?>" /> <br />
+            <label for="email">Role:</label>
+            <input name="role" class="form-control" id="role" value="<?=$user[3]?>" <?php if($user_role != 'admin'){ echo 'disabled';}?>/> <br />
+            <input type="submit" class="btn-primary form-control" value="Update profile">
         </form>
+        </div>
         <?php
         }
     }
