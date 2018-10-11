@@ -55,6 +55,7 @@ function insertQuery($query, $update = false)
     }
 }
 
+/* 
 function insertPreparedQuery($firstName, $surname, $email)
 {
 //$stmt = $conn->prepare("SELECT * FROM `users` WHERE `email`=:email AND `password` = :password");
@@ -65,3 +66,4 @@ $stmt->bindValue(':eMail', $email);
 //$stmt->bindValue(':password', $_POST["password"]);
 return $stmt->execute();
 }
+*/
