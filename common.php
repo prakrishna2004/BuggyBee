@@ -90,7 +90,8 @@ $links = array(
                 'Send Message' => $root_folder.'/sendmessage.php?sess_id='.$sess_id, 
                 'View Messages' => $root_folder.'/messages.php?sess_id='.$sess_id, 
                 'Edit Profile' => $root_folder.'/editprofile.php?sess_id='.$sess_id,
-		'Logout' => $root_folder.'/logout.php'
+		'Logout' => $root_folder.'/logout.php',
+        'References' => $root_folder.'/references.html'
           );
 
 echo "<div class='bg-nav'>";

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Website Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  .fakeimg {
+      height: 200px;
+      background: #aaa;
+  }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <!--<a class="navbar-brand" href="#">Buggy Bee References</a>-->
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav" role="tablist">
+        <li class="active"><a href="#setup" data-toggle="tab" role="tab">Setup Guide</a></li>
+        <li><a href="#injection" data-toggle="tab" role="tab">Injection</a></li>
+        <li><a href="#auth" data-toggle="tab" role="tab">Broken Authentication</a></li>
+        <li><a href="#xss" data-toggle="tab" role="tab">XSS</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container tab-content">
+   <div class="tab-pane active" role="tabpanel" id="setup">
+      <p>Go to this link</p> 
+   </div>
+   <div class="tab-pane" role="tabpanel" id="injection">
+        <p>Inj</p> 
+   </div>
+   <div class="tab-pane" role="tabpanel" id="auth">
+        <p>authk</p> 
+   </div>
+   <div class="tab-pane" role="tabpanel" id="xss">
+        <p>xss syntax</p> 
+   </div>
+  </div>
+</body>
+</html>
