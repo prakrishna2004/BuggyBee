@@ -7,7 +7,7 @@ if(!empty($_SESSION['authed']) && $_SESSION['authed'] === true) {
         $msgSQL = "select * from messages where user_id = " .
                     $_SESSION['userid'];
         $messages = getSelect($msgSQL);
-
+        echo "<div class='container'>";
         echo "<p>Here are messages people have sent you!</p>";
         echo "<table width='50%'>";
         echo "<tr><td>Subject</td><td>Message</td>";
@@ -18,6 +18,7 @@ if(!empty($_SESSION['authed']) && $_SESSION['authed'] === true) {
             }
         }
         echo "</table>";
+        echo "</div>";
     }
 }
 else {

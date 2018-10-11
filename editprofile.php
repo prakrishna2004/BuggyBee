@@ -40,18 +40,25 @@ if(!empty($_SESSION['authed']) && $_SESSION['authed'] === true) {
             }
             $user = $userList[0];
         ?>
-        <form method="POST">
-            <p>Edit your settings</p>
-            <label for="firstname">Firstname:</label>
-            <input name="firstname" id="firstname" value="<?=$user[1]?>" /> <br />
-            <label for="surname">Surname:</label>
-            <input name="surname" id="surname" value="<?=$user[2]?>" /> <br />
+        <div class="container">
+        <form method="POST" class="col-md-6">
+            <p style="font-weight: bold;font-size: 18px;">Edit Profile</p>
+            <div class="form-group">
+            <label for="firstname">First Name:</label>
+            <input class="form-control" name="firstname" id="firstname" value="<?=$user[1]?>" /> 
+            </div>
+             <div class="form-group">
+            <label for="surname">Last Name:</label>
+            <input class="form-control" name="surname" id="surname" value="<?=$user[2]?>" /> <br />
+            </div>
+            <div class="form-group">
             <label for="email">Email:</label>
-            <input name="email" id="email" value="<?=$user[0]?>" /> <br />
+            <input name="email" class="form-control" id="email" value="<?=$user[0]?>" /> <br />
             <label for="email">Role:</label>
-            <input name="role" id="role" value="<?=$user[3]?>" <?php if($user_role != 'admin'){ echo 'disabled';}?>/> <br />
-            <input type="submit" value="Update profile">
+            <input name="role" class="form-control" id="role" value="<?=$user[3]?>" <?php if($user_role != 'admin'){ echo 'disabled';}?>/> <br />
+            <input type="submit" class="btn-primary form-control" value="Update profile">
         </form>
+        </div>
         <?php
         }
     }
