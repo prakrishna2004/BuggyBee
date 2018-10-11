@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Website Example</title>
+  <title>References for Testing</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -38,7 +38,13 @@
 
 <div class="container tab-content">
    <div class="tab-pane active" role="tabpanel" id="setup">
-      <p>Go to this link</p> 
+      <p>
+      <ol>
+    <li>Load the db.sql file to your database.</li> 
+<li>Change the consts.php file to contain the username and password of database user.</li>
+<li>Load your site.</li>
+</ol>
+</p> 
    </div>
    <div class="tab-pane" role="tabpanel" id="injection">
         <p>Inj</p> 
@@ -47,7 +53,35 @@
         <p>authk</p> 
    </div>
    <div class="tab-pane" role="tabpanel" id="xss">
-        <p>xss syntax</p> 
+  <div class="container">
+  <h2>Testing with XSS</h2>
+  <p></p>            
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Objective</th>
+        <th>Input</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>To get cookie</td>
+        <td>&lt;script&gt;alert(document.cookie);&lt;/script&gt;</td>
+      </tr>
+      <tr>
+        <td>Classic XSS</td>
+        <td>&lt;script&gt;alert(1);&lt;/script&gt;</td>
+      </tr>
+      <tr>
+        <td>John</td>
+      </tr>
+      <tr>
+        <td>John</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div> 
    </div>
   </div>
 </body>
