@@ -3,12 +3,17 @@ require_once 'common.php';
 require_once 'dbfuncs.php';
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
-
+    
+    //fixed tags level 1
+   $msg= strip_tags($_REQUEST['message']);
+   $subject=strip_tags($_REQUEST['subject']);
     if(!empty($_REQUEST['user']) && !empty($_REQUEST['subject'])
         && !empty($_REQUEST['message'])) {
+        // fixed code level 1
         $msgSQL = "insert into messages(user_id, subject, message) values('" . 
-                    $_REQUEST['user'] . "','" . $_REQUEST['subject'] . "','"
-                    . $_REQUEST['message'] . "')";
+                    $_REQUEST['user'] . "','" . $subject . "','"
+                    . $msg . "')";
+
         $inserted = insertQuery($msgSQL);
         if($inserted === false) {
             echo 'Unable to send message. Sorry.';

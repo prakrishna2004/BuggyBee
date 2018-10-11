@@ -72,7 +72,7 @@ a:visited {
 <?php
 error_reporting(0);
 session_start();
-error_reporting(E_ALL);
+// error_reporting(E_ALL);
 $root_folder = "/BuggyBee";
 $user_role = $_REQUEST['role']?:$_SESSION['role'];
 $username = $_POST['username']?:$_SESSION['username'];
@@ -92,6 +92,7 @@ $links = array(
                 'Edit Profile' => $root_folder.'/editprofile.php?sess_id='.$sess_id,
 		'Logout' => $root_folder.'/logout.php'
           );
+
 echo "<div class='bg-nav'>";
 foreach($links as $title => $link) {
     echo "<a class ='style-nav' href='" . $link . "'>" . $title . "<a> | ";
